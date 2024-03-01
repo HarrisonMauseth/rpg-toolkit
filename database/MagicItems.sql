@@ -128,11 +128,4 @@ INSERT INTO charge_condition (charge_condition_id) VALUES ('Other');
 --FULL JOIN item_charge_condition icc USING (item_id)
 --FULL JOIN charge_condition cc USING (charge_condition_id);
 
--- Authorize an existing postgres user named "daouser" which allows for JdbcTemplate to
--- create new items that rely on a sequence-based primary keys, such as the Serial type.
--- NOTE: this can be skipped if you would prefer to use the default "postgres" user. For
--- security purposes, a stripped-down postgres user "daouser" is used instead to help
--- prevent security exploits by reducing privileges.
-GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO daouser;
-
 COMMIT;

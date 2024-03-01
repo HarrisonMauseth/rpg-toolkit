@@ -14,7 +14,7 @@ import java.util.List;
 public interface UserDao {
 
     /**
-     * Get all users from the database, ordered by user_id.
+     * Get all users from the database, ordered by username.
      *
      * @return All users as UserEntity objects in a List.
      */
