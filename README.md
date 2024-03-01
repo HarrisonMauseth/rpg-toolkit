@@ -3,7 +3,7 @@ In my free time, I love playing tabletop role-playing games with my friends. In 
 
 The role I often play is the person who runs the games. There are a lot of responsibilities that come with running a game which include adjudicating complex rulings, crafting encounters, challenging the players, and an astronomical amount of improvisation. Wearing that many hats gets tricky rather quickly.
 
-This project aims to reduce my workload, increase the fun, and maintain a steady pace throughout each session. 
+This project aims to reduce my workload, increase the fun, and help me maintain steady pacing throughout each session. 
 
 ## Application Functionality
 This is a server-side REST API which connects to a PostgreSQL by leveraging the DAO pattern and utilizing the Spring framework. Since I want to create a client with remote access to the server, my main focus has been spent on learning how to set up user registration, authentication, and authorization.
