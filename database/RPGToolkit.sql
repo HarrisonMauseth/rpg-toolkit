@@ -1,6 +1,6 @@
 START TRANSACTION;
 
-DROP TABLE IF EXISTS item_charge_condition, item_rarity, charge_condition, item, rarity, category, users CASCADE;
+DROP TABLE IF EXISTS item_charge_condition, item_rarity, item, charge_condition, rarity, category, users CASCADE;
 
 CREATE TABLE users (
     user_id SERIAL,
@@ -62,11 +62,10 @@ CREATE TABLE item_charge_condition (
 	CONSTRAINT FK_item_charge_reset_charge_reset FOREIGN KEY(charge_condition_id) REFERENCES charge_condition(charge_condition_id)
 );
 
--- populate item
--- SELECT * FROM item;
--- -- INSERT INTO member VALUES (DEFAULT, name, description, modifier, modifier_info, is_attunable, attunement_requirements, has_charges, number_charges, 
+-- populate users
+INSERT INTO users (username, password_hash, role) VALUES ('user', '$2a$10$a.giCRrhivgRdo2pNAVlwuSoOH2XMr4E/wgZPu8EsBWtKIdkyN/Fe', 'ROLE_USER');
 
--- -- populate category
+-- populate category
 INSERT INTO category (category_id) VALUES ('Unknown');
 INSERT INTO category (category_id) VALUES ('Armor');
 INSERT INTO category (category_id) VALUES ('Breastplate');
@@ -90,8 +89,7 @@ INSERT INTO category (category_id) VALUES ('Splint');
 INSERT INTO category (category_id) VALUES ('Staff');
 INSERT INTO category (category_id) VALUES ('Studded Leather');
 INSERT INTO category (category_id) VALUES ('Wand');
-INSERT INTO category (category_id) VALUES ('Wonderous Item');
-
+INSERT INTO category (category_id) VALUES ('Wondrous Item');
 
 -- populate rarity
 INSERT INTO rarity (rarity_id, min_level, min_cost, max_cost) VALUES ('Unknown', 0, 0, 999999);
@@ -102,7 +100,6 @@ INSERT INTO rarity (rarity_id, min_level, min_cost, max_cost) VALUES ('Very Rare
 INSERT INTO rarity (rarity_id, min_level, min_cost, max_cost) VALUES ('Legendary', 15, 50001, 500000);
 INSERT INTO rarity (rarity_id, min_level, min_cost, max_cost) VALUES ('Artifact', 17, 500001, 999999);
 
-
 -- -- populate charge_condition
 INSERT INTO charge_condition (charge_condition_id) VALUES ('Short Rest');
 INSERT INTO charge_condition (charge_condition_id) VALUES ('Long Rest');
@@ -110,22 +107,18 @@ INSERT INTO charge_condition (charge_condition_id) VALUES ('Dawn');
 INSERT INTO charge_condition (charge_condition_id) VALUES ('Consumable');
 INSERT INTO charge_condition (charge_condition_id) VALUES ('Other');
 
+-- populate item
+INSERT INTO item (item_name, category_id, description, modifier, modifier_info, requires_attunement, has_charges)
+    VALUES ('Bracers of Defense', 'Wondrous Item', 'While wearing these bracers, you gain a +2 bonus to AC if you are not wearing armor or using a shield.', 2, 'AC', true, false);
+INSERT INTO item (item_name, category_id, description, modifier, modifier_info, requires_attunement, has_charges)
+    VALUES ('Wand of Magic Detection', 'Wand', 'While holding this wand, you can use an action to expend 1 charge to cast *Detect Magic*.', 0, null, false, true);
 
 -- -- populate item_rarity
--- SELECT * FROM item_rarity;
+INSERT INTO item_rarity (item_id, rarity_id) VALUES (1, 'Rare');
+INSERT INTO item_rarity (item_id, rarity_id) VALUES (2, 'Uncommon');
 
--- -- populate category_id
--- SELECT * FROM category_id;
-
--- -- populate item_charge_reset
--- SELECT * FROM item_charge_condition;
-
-
---SELECT * FROM item i
---FULL JOIN item_rarity ir USING (item_id)
---FULL JOIN rarity r USING (rarity_id)
---FULL JOIN category c USING (category_id)
---FULL JOIN item_charge_condition icc USING (item_id)
---FULL JOIN charge_condition cc USING (charge_condition_id);
+-- populate item_charge_condition
+INSERT INTO item_charge_condition (item_id, charge_condition_id, number_charges, charge_reset_requirements)
+    VALUES (2, 'Dawn', 7, 'This wand has 7 charges and regains 1d6+1 expended charges each dawn. When the last charge is expended, roll a d20. On a 1, the wand violently shakes and sparks with magic then disappears.');
 
 COMMIT;
