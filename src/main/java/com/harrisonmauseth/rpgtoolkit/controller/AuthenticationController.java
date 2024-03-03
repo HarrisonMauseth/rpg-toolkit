@@ -24,7 +24,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 /**
  * AuthenticationController is a class used for handling requests to authenticate Users.
- *
+ * <p>
  * It depends on an instance of a UserDao for retrieving and storing user data and is
  * provided through dependency injection.
  */
@@ -54,7 +54,7 @@ public class AuthenticationController {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            String jwt = jwtTokenProvider.createToken(authentication, false);
+            String jwt = jwtTokenProvider.createToken(authentication, loginDto.isRemembered());
 
             UserEntity user = userDao.getUserByUsername(loginDto.getUsername());
             return new LoginResponseDto(jwt, user);

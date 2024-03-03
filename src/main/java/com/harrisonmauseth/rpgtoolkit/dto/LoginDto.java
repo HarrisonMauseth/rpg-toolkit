@@ -1,5 +1,7 @@
 package com.harrisonmauseth.rpgtoolkit.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * LoginDto is a class used to hold the user login information that is being sent from
  * the client to the server for the login endpoint.
@@ -7,6 +9,8 @@ package com.harrisonmauseth.rpgtoolkit.dto;
 public class LoginDto {
     private String username;
     private String password;
+    @JsonProperty("remember_me")
+    private boolean remembered;
 
     public LoginDto() {
     }
@@ -14,6 +18,12 @@ public class LoginDto {
     public LoginDto(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public LoginDto(String username, String password, boolean remembered) {
+        this.username = username;
+        this.password = password;
+        this.remembered = remembered;
     }
 
     public String getUsername() {
@@ -30,5 +40,13 @@ public class LoginDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isRemembered() {
+        return remembered;
+    }
+
+    public void setRemembered(boolean remembered) {
+        this.remembered = remembered;
     }
 }

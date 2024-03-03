@@ -1,6 +1,7 @@
 package com.harrisonmauseth.rpgtoolkit.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -69,10 +70,12 @@ public class UserEntity {
         this.activated = activated;
     }
 
+    @JsonIgnore
     public Set<Role> getRoles() {
         return roles;
     }
 
+    @JsonProperty("roles")
     public String getRolesAsString() {
         String authorityString = "";
         for (Role authority : roles) {
