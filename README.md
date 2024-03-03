@@ -11,7 +11,7 @@ This is a server-side REST API which connects to a PostgreSQL by leveraging the 
 ### API Endpoints
 Since this project is in the early phases of development, I am using the default Spring URL `http://localhost:8080` with the following endpoints:
 1. POST `/register` - register a username and password and store it in the `users` entity of the database
-2. POST `/login` - log in to the API with a user from the `users` entity of the database
+2. POST `/login` - log in to the API with a user from the `users` entity of the database and return a JWT bearer token
 
 ## Testing
 The application is currently using JUnit 4 for all unit tests and integration tests.
@@ -19,6 +19,6 @@ The application is currently using JUnit 4 for all unit tests and integration te
 ### Integration Testing
 In order to properly follow the DAO pattern, DAO interfaces have been implemented. This allows for ease of testing and helps reduce errors when refactoring. The tests for all DAO classes can be found in the `dao` package.
 
-The class `TestingDatabaseConfig` utilizes environment variables for security purposes, but I have included Postgres's default values as well. This class creates the `MagicItems_test` mock database and uses the `test-schema.sql` and the `test-data.sql` found within the `resources` directory. When testing has completed, the database will be dropped.
+The class `TestingDatabaseConfig` utilizes environment variables for security purposes, but I have included Postgres's default values as well. This class creates the `RPGToolkit_test` mock database and uses the `test-schema.sql` and the `test-data.sql` found within the `resources` directory. When testing has completed, the database will be dropped.
 
 The `BaseDaoTest` is an abstract class which brings in the configuration set up in the `TestingDatabaseConfig` class. This allows for the code to be polymorphic as the class can be extended to any DAO testing class.
