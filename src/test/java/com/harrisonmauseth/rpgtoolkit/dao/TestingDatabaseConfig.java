@@ -25,7 +25,7 @@ public class TestingDatabaseConfig {
             Objects.requireNonNullElse(System.getenv("POSTGRES_HOST"), "localhost");
     private static final String DB_PORT =
             Objects.requireNonNullElse(System.getenv("POSTGRES_PORT"), "5432");
-    private static final String DB_NAME = "MagicItems_test";
+    private static final String DB_NAME = "RPGToolkit_test";
     private static final String DB_USERNAME =
             Objects.requireNonNullElse(System.getenv("POSTGRES_USER"), "postgres");
     private static final String DB_PASSWORD =
