@@ -21,13 +21,35 @@ public class MagicItem {
     private boolean attunement;
     @JsonProperty("attunement_requirements")
     private String attunementRequirements;
-    private boolean hasCharges;
-    private String chargeConditionId;
+    private boolean charges;
+    @JsonProperty("number_of_charges")
     private int numberOfCharges;
+    @JsonProperty("charge_reset_condition")
+    private String chargeConditionId;
+    @JsonProperty("charge_info")
+    private String chargeInfo;
 
 
     public MagicItem() {
 
+    }
+
+    public MagicItem(int itemId, String name, String rarityId, String categoryId, String description, int modifier,
+                     String modifierInfo, boolean attunement, String attunementRequirements, boolean charges,
+                     String chargeConditionId, int numberOfCharges, String chargeInfo) {
+        this.itemId = itemId;
+        this.name = name;
+        this.rarityId = rarityId;
+        this.categoryId = categoryId;
+        this.description = description;
+        this.modifier = modifier;
+        this.modifierInfo = modifierInfo;
+        this.attunement = attunement;
+        this.attunementRequirements = attunementRequirements;
+        this.charges = charges;
+        this.chargeConditionId = chargeConditionId;
+        this.numberOfCharges = numberOfCharges;
+        this.chargeInfo = chargeInfo;
     }
 
     public int getItemId() {
@@ -102,12 +124,12 @@ public class MagicItem {
         this.attunementRequirements = attunementRequirements;
     }
 
-    public boolean isHasCharges() {
-        return hasCharges;
+    public boolean hasCharges() {
+        return charges;
     }
 
-    public void setHasCharges(boolean hasCharges) {
-        this.hasCharges = hasCharges;
+    public void setCharges(boolean charges) {
+        this.charges = charges;
     }
 
     public String getChargeConditionId() {
@@ -124,5 +146,32 @@ public class MagicItem {
 
     public void setNumberOfCharges(int numberOfCharges) {
         this.numberOfCharges = numberOfCharges;
+    }
+
+    public String getChargeInfo() {
+        return chargeInfo;
+    }
+
+    public void setChargeInfo(String chargeInfo) {
+        this.chargeInfo = chargeInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "MagicItem{" +
+                "itemId=" + itemId +
+                ", name='" + name + '\'' +
+                ", rarityId='" + rarityId + '\'' +
+                ", categoryId='" + categoryId + '\'' +
+                ", description='" + description + '\'' +
+                ", modifier=" + modifier +
+                ", modifierInfo='" + modifierInfo + '\'' +
+                ", attunement=" + attunement +
+                ", attunementRequirements='" + attunementRequirements + '\'' +
+                ", charges=" + charges +
+                ", numberOfCharges=" + numberOfCharges +
+                ", chargeConditionId='" + chargeConditionId + '\'' +
+                ", chargeInfo='" + chargeInfo + '\'' +
+                '}';
     }
 }
