@@ -7,23 +7,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class MagicItem {
 
+    @JsonProperty("item_id")
     private int itemId;
     private String name;
     @JsonProperty("rarity")
     private String rarityId;
     @JsonProperty("type")
     private String categoryId;
-    @JsonProperty("desc")
     private String description;
     private int modifier;
-    private String modifier_info;
-    private boolean requiresAttunement;
+    private String modifierInfo;
     @JsonProperty("requires_attunement")
+    private boolean attunement;
+    @JsonProperty("attunement_requirements")
     private String attunementRequirements;
     private boolean hasCharges;
     private String chargeConditionId;
     private int numberOfCharges;
-
 
 
     public MagicItem() {
@@ -78,20 +78,20 @@ public class MagicItem {
         this.modifier = modifier;
     }
 
-    public String getModifier_info() {
-        return modifier_info;
+    public String getModifierInfo() {
+        return modifierInfo;
     }
 
-    public void setModifier_info(String modifier_info) {
-        this.modifier_info = modifier_info;
+    public void setModifierInfo(String modifier_info) {
+        this.modifierInfo = modifier_info;
     }
 
-    public boolean isRequiresAttunement() {
-        return requiresAttunement;
+    public boolean requiresAttunement() {
+        return attunement;
     }
 
-    public void setRequiresAttunement(boolean requiresAttunement) {
-        this.requiresAttunement = requiresAttunement;
+    public void setAttunement(boolean attunement) {
+        this.attunement = attunement;
     }
 
     public String getAttunementRequirements() {
