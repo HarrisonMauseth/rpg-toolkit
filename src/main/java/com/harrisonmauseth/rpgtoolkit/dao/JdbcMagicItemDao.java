@@ -2,6 +2,7 @@ package com.harrisonmauseth.rpgtoolkit.dao;
 
 import com.harrisonmauseth.rpgtoolkit.exception.DaoException;
 import com.harrisonmauseth.rpgtoolkit.model.MagicItem;
+import com.harrisonmauseth.rpgtoolkit.model.MagicItemServiceDto;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -23,6 +24,11 @@ public class JdbcMagicItemDao implements MagicItemDao {
 
     @Override
     public MagicItem createMagicItem(MagicItem magicItem) {
+        return null;
+    }
+
+    @Override
+    public MagicItem createMagicItem(MagicItemServiceDto magicItemServiceDto) {
         return null;
     }
 

@@ -1,6 +1,7 @@
 package com.harrisonmauseth.rpgtoolkit.dao;
 
 import com.harrisonmauseth.rpgtoolkit.model.MagicItem;
+import com.harrisonmauseth.rpgtoolkit.model.MagicItemServiceDto;
 
 import java.util.List;
 
@@ -13,6 +14,15 @@ public interface MagicItemDao {
      * @return the added MagicItem object with its new id filled in.
      */
     MagicItem createMagicItem(MagicItem magicItem);
+
+    /**
+     * Add a new magic item to the database using an item retrieved using
+     * the MagicItemService API.
+     *
+     * @param magicItemServiceDto The item to create.
+     * @return the added MagicItem object with its new id filled in.
+     */
+    MagicItem createMagicItem(MagicItemServiceDto magicItemServiceDto);
 
     /**
      * Get a list of all the magic items in the database, ordered by name.
